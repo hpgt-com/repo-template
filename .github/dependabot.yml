@@ -1,0 +1,26 @@
+# Dependabot åpner PR-er når det kommer nye versjoner. Én samlet PR per økosystem per måned.
+# cooldown: nye versjoner foreslås først etter 7 dager, så en kompromittert release rekker å bli oppdaget.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    labels: ["dependencies"]
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ["*"]
+
+  # TILPASS: fjern kommentaren for økosystemene repoet bruker (npm, pip, gomod, docker, ...).
+  # - package-ecosystem: npm
+  #   directory: /
+  #   schedule:
+  #     interval: monthly
+  #   labels: ["dependencies"]
+  #   cooldown:
+  #     default-days: 7
+  #   groups:
+  #     npm:
+  #       patterns: ["*"]

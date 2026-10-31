@@ -1,0 +1,5 @@
+# Hvem som eier hva. GitHub ber disse om review på PR-er som endrer filene.
+# Workflowene og sikkerhetsoppsettet er de mest følsomme filene.
+*                 @krishofs
+/.github/         @krishofs
+/SECURITY.md      @krishofs

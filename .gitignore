@@ -1,0 +1,24 @@
+# Avhengigheter og bygg
+node_modules/
+dist/
+build/
+_site/
+.cache/
+__pycache__/
+.venv/
+
+# Lokalt oppsett
+.claude/
+.vscode/
+.idea/
+.DS_Store
+
+# Hemmeligheter og nøkler skal aldri inn i repoet (bruk GitHub-secrets i et environment).
+.env
+.env.*
+!.env.example
+.dev.vars
+*.pem
+*.key
+*.p12
+*.pfx
