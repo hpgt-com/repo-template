@@ -1,0 +1,1 @@
+{ "name": "CodeQL (org)", "description": "CodeQL i Advanced setup, på PR, main og ukentlig.", "categories": ["Code Scanning"], "iconName": "octicon codescan" }

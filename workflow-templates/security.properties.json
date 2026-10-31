@@ -1,0 +1,1 @@
+{ "name": "Security checks (org)", "description": "dependency-review og zizmor. Påkrevde sjekker i org-rulesettet.", "categories": ["Security"], "iconName": "octicon shield-check" }

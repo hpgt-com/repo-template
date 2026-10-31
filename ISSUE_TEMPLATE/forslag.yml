@@ -1,0 +1,10 @@
+name: Forslag
+description: En idé eller ønsket endring.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Hva ønsker du, og hvorfor?
+    validations:
+      required: true

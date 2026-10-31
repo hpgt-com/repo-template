@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Sikkerhetsfeil
+    url: https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability
+    about: Ikke opprett en offentlig sak. Bruk «Report a vulnerability» under Security-fanen i repoet.

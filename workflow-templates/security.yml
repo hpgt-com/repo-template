@@ -1,0 +1,41 @@
+name: Security checks
+
+# Felles sikkerhetssjekker for alle repo i orgen. Jobbnavnene (dependency-review, workflow-security) er
+# statussjekkene som branch-rulesettet krever, så ikke gi dem nytt navn uten å oppdatere rulesettet.
+
+on:
+  pull_request:
+    branches: [$default-branch]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: security-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Stopper PR-er som legger til pakker eller Actions med kjente sårbarheter (moderate eller høyere).
+  # Krever Dependency graph (på som standard for offentlige repo; for private repo kreves GitHub Advanced Security).
+  dependency-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: moderate
+
+  # zizmor: vanlige sikkerhetsfeil i workflowene (for vide rettigheter, injection, tokens som lekker).
+  workflow-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: zizmorcore/zizmor-action@cc914d7f3750a2d13d75c7f184a1060aa0e9d482 # v0.6.4
+        with:
+          advanced-security: false

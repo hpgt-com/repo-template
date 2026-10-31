@@ -1,0 +1,1 @@
+{ "name": "OpenSSF Scorecard (org)", "description": "Ukentlig sjekk av forsyningskjeden. Bare offentlige repo.", "categories": ["Security"], "iconName": "octicon checklist" }

@@ -1,0 +1,22 @@
+name: Feil
+description: Noe virker ikke som det skal.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Obs, saken blir offentlig synlig. Sikkerhetsfeil rapporteres under Security-fanen i stedet.
+  - type: textarea
+    id: what
+    attributes:
+      label: Hva skjedde?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Hva forventet du?
+  - type: textarea
+    id: steps
+    attributes:
+      label: Hvordan gjenskape det
+      placeholder: "1. Gå til ...\n2. Klikk ..."
