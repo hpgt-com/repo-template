@@ -2,7 +2,7 @@
 # Setter innstillingene som ikke kan ligge i et repo. Kjøres lokalt av en org-eier med `gh auth login`.
 #
 #   ./apply.sh org   <org>                       org-innstillinger (Actions-policy, base permission, ...)
-#   ./apply.sh repo  <org>/<repo> [--checks a,b] repo-innstillinger, sikkerhet og rulesettet «main protection»
+#   ./apply.sh repo  <org>/<repo> [--checks a,b] repo-innstillinger, sikkerhet og rulesettet «Main protection»
 #   ./apply.sh audit <org>/<repo>                viser hva som står på, uten å endre noe
 #
 # Trygt å kjøre flere ganger: rulesettet oppdateres hvis det finnes fra før.
@@ -104,7 +104,7 @@ for rule in r["rules"]:
 print(json.dumps(r))
 PY
 )
-  local id; id=$(gh api "repos/$full/rulesets" --jq '.[] | select(.name=="main protection") | .id' | head -1)
+  local id; id=$(gh api "repos/$full/rulesets" --jq '.[] | select(.name | ascii_downcase == "main protection") | .id' | head -1)
   if [[ -n $id ]]; then
     gh api -X PUT "repos/$full/rulesets/$id" --silent --input - <<<"$body"; ok "ruleset oppdatert ($checks)"
   else
