@@ -8,7 +8,7 @@ can, but this is a volunteer club project.
 
 ## What is in place
 
-- All changes to `main` go through a pull request (branch ruleset «main protection»). Force push and deletion of `main`
+- All changes to `main` go through a pull request (branch ruleset «Main protection»). Force push and deletion of `main`
   are blocked.
 - Required checks: `dependency-review` (no dependencies with known vulnerabilities) and `workflow-security` (zizmor),
   plus CodeQL code scanning (high or higher blocks the merge).
