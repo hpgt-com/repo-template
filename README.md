@@ -12,6 +12,8 @@
 - [ ] Fyll inn `AGENTS.md`: prosjektet, kommandoene og reglene som gjelder repoet.
 - [ ] `.github/workflows/code-scanning.yml`: legg til språkene repoet bruker.
 - [ ] `.github/dependabot.yml`: slå på økosystemene repoet bruker.
+- [ ] `.github/workflows/dependabot-automerge.yml`: utvid til flere økosystemer når repoet har tester som fanger
+      brudd, og bruk et app-token hvis repoet publiserer ved push til `main`.
 - [ ] Privat repo: slett `.github/workflows/scorecard.yml`.
 - [ ] Kjør `settings/apply.sh repo <navn>` fra `hpgt-com/repo-template` (rulesett og sikkerhetsinnstillinger;
       innstillinger følger ikke med når et repo lages fra en mal).
