@@ -17,6 +17,8 @@
 - [ ] Privat repo: slett `.github/workflows/scorecard.yml`.
 - [ ] Kjør `settings/apply.sh repo <navn>` fra `hpgt-com/repo-template` (rulesett og sikkerhetsinnstillinger;
       innstillinger følger ikke med når et repo lages fra en mal).
+- [ ] Legg repoet til i `repos.json` i `hpgt-com/operations`, med synlighet og påkrevde sjekker. Ellers meldes det
+      som avvik av den ukentlige kontrollen.
 - [ ] Legg til en `build`/`test`-jobb og legg den til som påkrevd sjekk (`--checks`).
 
 ## Sikkerhet
