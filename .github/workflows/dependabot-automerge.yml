@@ -1,0 +1,49 @@
+name: Dependabot automerge
+
+# Slår på automatisk merge for Dependabot-PR-er som oppfyller kriteriene i
+# https://github.com/hpgt-com/guidelines/blob/main/github-security.md#automatisk-merge:
+# patch eller minor av GitHub Actions. PR-en merges først når alle påkrevde sjekker er grønne (regelsettet på main).
+# Repoet har ikke tester som dekker npm-oppdateringer, så de og major-oppdateringer merges manuelt.
+#
+# pull_request_target: arbeidsflyten kjører alltid versjonen fra main og sjekker ikke ut koden i PR-en.
+# GITHUB_TOKEN holder, fordi en merge her ikke trenger å starte andre arbeidsflyter.
+
+on:
+  pull_request_target: # zizmor: ignore[dangerous-triggers] ingen checkout, kjører ingen kode fra PR-en
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  automerge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - id: metadata
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+        with:
+          github-token: ${{ github.token }}
+
+      - name: Slå på automatisk merge
+        if: >-
+          (steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+           steps.metadata.outputs.update-type == 'version-update:semver-minor') &&
+          steps.metadata.outputs.package-ecosystem == 'github_actions'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.html_url }}
+        run: gh pr merge --auto --squash "$PR"
+
+      - name: Krever manuell merge
+        if: >-
+          !((steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+             steps.metadata.outputs.update-type == 'version-update:semver-minor') &&
+            steps.metadata.outputs.package-ecosystem == 'github_actions')
+        env:
+          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
+          ECOSYSTEM: ${{ steps.metadata.outputs.package-ecosystem }}
+        run: echo "::notice::$ECOSYSTEM ($UPDATE_TYPE) merges manuelt."

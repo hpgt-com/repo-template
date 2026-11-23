@@ -12,7 +12,9 @@ can, but this is a volunteer club project.
   are blocked.
 - Required checks: `dependency-review` (no dependencies with known vulnerabilities) and `workflow-security` (zizmor),
   plus CodeQL code scanning (high or higher blocks the merge).
-- Actions are pinned to commit SHAs and updated monthly by Dependabot, with a 7-day cooldown.
+- Actions are pinned to commit SHAs and updated monthly by Dependabot, with a cooldown of 7 days (30 for major
+  versions). Patch and minor updates of Actions are merged automatically when all required checks pass
+  (`dependabot-automerge.yml`). Other updates are merged by hand.
 - Workflows get read-only access by default; jobs ask for more only when they need it. `persist-credentials: false`
   on every checkout.
 - Secrets live in GitHub environments limited to `main`, never in the code. `.gitignore` blocks `.env` and key files.
