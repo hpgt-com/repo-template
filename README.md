@@ -9,6 +9,7 @@
 ## Etter at repoet er laget fra malen
 
 - [ ] Fyll inn denne README-en og `description` på repoet.
+- [ ] Fyll inn `AGENTS.md`: prosjektet, kommandoene og reglene som gjelder repoet.
 - [ ] `.github/workflows/code-scanning.yml`: legg til språkene repoet bruker.
 - [ ] `.github/dependabot.yml`: slå på økosystemene repoet bruker.
 - [ ] Privat repo: slett `.github/workflows/scorecard.yml`.
