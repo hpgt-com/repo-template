@@ -1,4 +1,4 @@
-name: Code scanning
+name: Kodeskanning
 
 # CodeQL på PR-er, på main og ukentlig. Funn vises under Security → Code scanning.
 # Gratis for offentlige repo; private repo krever GitHub Code Security.

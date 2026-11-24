@@ -1,4 +1,4 @@
-name: Dependabot automerge
+name: Automatisk merge av Dependabot
 
 # Slår på automatisk merge for Dependabot-PR-er som oppfyller kriteriene i
 # https://github.com/hpgt-com/guidelines/blob/main/github-security.md#automatisk-merge:
